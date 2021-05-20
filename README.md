@@ -1,6 +1,6 @@
 # بدون نقاط Dotsless
 
-[Demo App](dotsless.com).
+[Demo App](https://dotsless.com/).
 
 اداة بسيطة للكتابة باللغة العربية بدون نقاط
 
