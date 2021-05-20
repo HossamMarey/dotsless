@@ -1,19 +1,28 @@
 import React, { useState } from "react";
+import Picker from "emoji-picker-react";
+
+import reloadImg from "../assets/reload.png";
+import smileImg from "../assets/smile.png";
 
 const Noqat = () => {
   const [text, setText] = useState("");
+  const [mainText, setMainText] = useState("");
   const [btnstr, setBtnstr] = useState(true);
+
+  const [showPicker, setShowPicker] = useState(false);
+
   const toReplace = [
     ["اسرائيل", "اــــرائىل"],
-    ["إسرائيل", "إــــرائىل"],
+    ["إسرائيل", "إــــرائٮل"],
     ["ج", "ح"],
     ["خ", "ح"],
     ["غ", "ع"],
     ["ف", "ڡ"],
     ["ق", "ڡ"],
-    ["ث", "ى"],
-    ["ن", "ى"],
-    ["ب", "ى"],
+    ["ث", "ٮ"],
+    ["ن", "ں"],
+    ["ب", "ٮ"],
+    ["ت", "ٮ"],
     ["ي", "ى"],
     ["ض", "ص"],
     ["ش", "س"],
@@ -25,6 +34,7 @@ const Noqat = () => {
   ];
   const writingHandle = (e) => {
     let txt = e.target.value;
+    setMainText(txt);
     // /a/gi
     toReplace.forEach((reg) => {
       txt = txt.replaceAll(reg[0], reg[1]);
@@ -54,6 +64,20 @@ const Noqat = () => {
       setBtnstr(false);
       setTimeout(() => setBtnstr(true), 500);
     }
+  };
+
+  const clearForm = () => {
+    setText("");
+    setMainText("");
+  };
+  const closePicker = (e) => {
+    e.stopPropagation();
+    setShowPicker(false);
+  };
+  const onEmojiClick = (e, emojiObject) => {
+    e.stopPropagation();
+    setMainText(mainText + emojiObject.emoji);
+    setText(text + emojiObject.emoji);
   };
 
   return (
@@ -97,15 +121,38 @@ const Noqat = () => {
           <div className="noqat-list">
             <form onSubmit={(e) => e.preventDefault()}>
               <textarea
-                name=""
-                id=""
+                name="txtInput"
+                id="txtInput"
                 placeholder="اكتب ماتريد هنا"
                 onChange={writingHandle}
+                value={mainText}
               ></textarea>
+              <div className="clear-form" onClick={clearForm}>
+                <img src={reloadImg} alt="clear text" />
+              </div>
+              <div
+                className="emoji-icon"
+                onClick={() => {
+                  setShowPicker(true);
+                }}
+              >
+                <img src={smileImg} alt="clear text" />
+              </div>
             </form>
           </div>
         </div>
       </div>
+      {showPicker && (
+        <div className="emoji-picker" onClick={closePicker}>
+          <div
+            onClick={(e) => {
+              e.stopPropagation();
+            }}
+          >
+            <Picker onEmojiClick={onEmojiClick} />
+          </div>
+        </div>
+      )}
     </main>
   );
 };

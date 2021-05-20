@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <footer>
       <div className="content">
-        <span> © Hossam Marey</span>
+        <span> Hossam Marey</span>
         <a
           href="https://www.linkedin.com/in/hossam-marey/"
           target="_blank"

@@ -257,6 +257,7 @@ textarea::placeholder {
   /* height: 100%; */
 
   padding: 0.5rem 0.75rem;
+  padding-left: 3rem;
   background-color: var(--color-bg);
   border: none;
   outline: none;
@@ -289,8 +290,10 @@ footer {
 }
 footer span {
   vertical-align: top;
+  line-height: 1.2;
   opacity: 0.5;
-  font-size: 0.875rem;
+  font-size: 0.9rem;
+  margin-right: 5px;
 }
 footer a {
   display: inline-block;
@@ -303,4 +306,69 @@ footer img {
 }
 footer a:hover {
   opacity: 1;
+}
+
+.noqat-list form {
+  position: relative;
+}
+
+.emoji-icon,
+.clear-form {
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  opacity: 0.6;
+  cursor: pointer;
+  transform-origin: center;
+  transition: all 0.3s;
+}
+.emoji-icon:hover,
+.clear-form:hover {
+  opacity: 1;
+}
+.clear-form:active {
+  transform: rotate(180deg);
+}
+
+.emoji-icon,
+.emoji-icon img,
+.clear-form,
+.clear-form img {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.emoji-icon {
+  top: 3.5rem;
+}
+
+.emoji-picker {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  direction: ltr;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--color-dark);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
