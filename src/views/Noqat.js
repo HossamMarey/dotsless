@@ -38,7 +38,8 @@ const Noqat = () => {
     setMainText(txt);
     // /a/gi
     toReplace.forEach((reg) => {
-      txt = txt.replaceAll(reg[0], reg[1]);
+      let regx = new RegExp(`${reg[0]}`, "gi");
+      txt = txt.replace(regx, reg[1]);
     });
     setText(txt);
   };
@@ -86,6 +87,7 @@ const Noqat = () => {
       <div className="container">
         <div className="noqat">
           {/* result  */}
+
           <div className="noqat-form">
             <form
               className="noqat-form_form"
